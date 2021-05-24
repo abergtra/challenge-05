@@ -23,4 +23,4 @@ var interval = setInterval(function() {
 var userInput;
 var hourSpan;
 
-//
+//Page Start Up function
