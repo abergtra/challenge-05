@@ -67,22 +67,25 @@ function startUp() {
     eightPM.val(start8PM);
   } 
 
-  //Set Format of Textbox Based on Time
-  function timedColor () {
-    $(".textbox-format").each(function () {
-        var timeTest = parseInt($(this).attr("id"));
-        hour = parseInt(hour);
-        console.log(timeTest);
-        console.log(hour);
-        if (hour > timeTest) {
-            $(this).addClass("past");
-        } else if (hour < timeTest) {
-            $(this).addClass("future");
-        } else {
-            $(this).addClass("present");
-        }
-    });
-  }
-
-  startUp();
-  timedColor();
+//Set Format of Textbox Based on Time
+function timedColor () {
+$(".textbox-format").each(function () {
+    //Identify time each textbox refers to
+    var textTime = parseInt($(this).attr("id"));
+    //Identify real life time
+    hour = parseInt(hour);
+    //Console Logs used for testing/debugging
+        //console.log(textTime);
+        //console.log(hour);
+    //Compare textbox time and real life time for formatting
+    if (hour == textTime) {
+        $(this).addClass("present");
+    } else if (hour < textTime) {
+        $(this).addClass("future");
+    } else {
+        $(this).addClass("past");
+    }
+});
+}
+startUp();
+timedColor();
