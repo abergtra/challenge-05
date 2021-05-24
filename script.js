@@ -8,6 +8,9 @@ var twoPM = $('#2pmtext');
 var threePM = $('#3pmtext');
 var fourPM = $('#4pmtext');
 var fivePM = $('#5pmtext');
+var sixPM = $('#6pmtext');
+var sevenPM = $('#7pmtext');
+var eightPM = $('#8pmtext');
 
 //establish current date & time with Moment.js
 var currentDate = moment().format('dddd') + ' | ' + moment().format("MMM Do") + ', ' + moment().format("YYYY");
@@ -53,4 +56,33 @@ function startUp() {
     
     var start5PM = JSON.parse(localStorage.getItem("5PM"))
     fivePM.val(start5PM);
+
+    var start6PM = JSON.parse(localStorage.getItem("6PM"))
+    sixPM.val(start6PM);
+    
+    var start7PM = JSON.parse(localStorage.getItem("7PM"))
+    sevenPM.val(start7PM);
+
+    var start8PM = JSON.parse(localStorage.getItem("8PM"))
+    eightPM.val(start8PM);
   } 
+
+  //Set Format of Textbox Based on Time
+  function timedColor () {
+    $(".textbox-format").each(function () {
+        var timeTest = parseInt($(this).attr("id"));
+        hour = parseInt(hour);
+        console.log(timeTest);
+        console.log(hour);
+        if (hour > timeTest) {
+            $(this).addClass("past");
+        } else if (hour < timeTest) {
+            $(this).addClass("future");
+        } else {
+            $(this).addClass("present");
+        }
+    });
+  }
+
+  startUp();
+  timedColor();
