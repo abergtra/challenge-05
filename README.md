@@ -4,7 +4,7 @@ This site will help you schedule and organize your day!
 You can input activities for each hour and save them for later through your Local Storage.
 
 Follow this link to check it out:
-[Password Generator](https://abergtra.github.io/challenge-05/)
+[Work Day Scheduler](https://abergtra.github.io/challenge-05/)
 
 ## User Interface
 
