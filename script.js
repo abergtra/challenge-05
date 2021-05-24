@@ -1,30 +1,31 @@
 //connect to HTMl with Ids
-var nineAM = $('#9amtext');
-var tenAM = $('#10amtext');
-var elevenAM = $('#11amtext');
-var twelvePM = $('#12pmtext');
-var onePM = $('#1pmtext');
-var twoPM = $('#2pmtext');
-var threePM = $('#3pmtext');
-var fourPM = $('#4pmtext');
-var fivePM = $('#5pmtext');
-var sixPM = $('#6pmtext');
-var sevenPM = $('#7pmtext');
-var eightPM = $('#8pmtext');
+var nineAM = $('#9time');
+var tenAM = $('#10time');
+var elevenAM = $('#11time');
+var twelvePM = $('#12time');
+var onePM = $('#13time');
+var twoPM = $('#14time');
+var threePM = $('#15time');
+var fourPM = $('#16time');
+var fivePM = $('#17time');
+var sixPM = $('#18time');
+var sevenPM = $('#19time');
+var eightPM = $('#20time');
 
 //establish current date & time with Moment.js
-var currentDate = moment().format('dddd') + ' | ' + moment().format("MMM Do") + ', ' + moment().format("YYYY");
+var currentDateTime = moment().format('dddd') + ' | ' + moment().format("MMM Do") + ', ' + moment().format("YYYY");
 var currentHour = moment().format('h:mm:ss a');
-var hour = moment().hours();
+var hour = moment().hours(); //note this outputs 24 hour time, not AM/PM
 
 //print date and time to heading
 var interval = setInterval(function() {
     var rightNow = moment();
     $('#currentDay').html(rightNow.format('dddd') + ' | ' + rightNow.format("MMM Do") + ', ' + rightNow.format("YYYY") + ' | ' + rightNow.format('hh:mm:ss A'));
-  }, 100);
+}, 100);
 
-var userInput;
-var hourSpan;
+//Universal Variables
+var UItext;
+var timeSpan;
 
 //Page Start Up function
 function startUp() {
@@ -69,23 +70,39 @@ function startUp() {
 
 //Set Format of Textbox Based on Time
 function timedColor () {
-$(".textbox-format").each(function () {
-    //Identify time each textbox refers to
-    var textTime = parseInt($(this).attr("id"));
-    //Identify real life time
-    hour = parseInt(hour);
-    //Console Logs used for testing/debugging
-        //console.log(textTime);
-        //console.log(hour);
-    //Compare textbox time and real life time for formatting
-    if (hour == textTime) {
-        $(this).addClass("present");
-    } else if (hour < textTime) {
-        $(this).addClass("future");
-    } else {
-        $(this).addClass("past");
-    }
-});
+    $(".textbox-format").each(function () {
+        //Identify time each textbox refers to
+        var textTime = parseInt($(this).attr("id"));
+        //Identify real life time
+        hour = parseInt(hour);
+
+        //Console Logs used for testing/debugging
+            //console.log(textTime);
+            //console.log(hour);
+
+        //Compare textbox time and real life time for formatting
+        if (hour == textTime) {
+            $(this).addClass("present");
+        } else if (hour < textTime) {
+            $(this).addClass("future");
+        } else {
+            $(this).addClass("past");
+        }
+    });
 }
+
+//Save Button 
+$(".saveBtn").on("click", function(){
+
+    timeSpan = $(this).siblings(".hour").text().trim();
+    UItext = $(this).siblings(".user-input").val().trim();
+
+    //Console Logs used for testing/debugging
+    console.log(timeSpan);
+    console.log(UItext);
+
+    localStorage.setItem(timeSpan, JSON.stringify(UItext));
+});
+
 startUp();
 timedColor();
