@@ -27,6 +27,25 @@ var interval = setInterval(function() {
 var UItext;
 var timeSpan;
 
+//Save Button 
+$(".saveBtn").on("click", function(){
+
+    timeSpan = $(this).siblings(".hour").text().trim();
+    UItext = $(this).siblings(".user-input").val().trim();
+
+    //Console Logs used for testing/debugging
+    console.log(timeSpan);
+    console.log(UItext);
+
+    localStorage.setItem(timeSpan, JSON.stringify(UItext));
+});
+
+//Clear Schedule Button
+$("#clearSchedule").on("click", function(){
+    localStorage.clear();
+    startUp()
+});
+
 //Page Start Up function
 function startUp() {
     console.log("Log In Time: " + hour);
@@ -90,19 +109,6 @@ function timedColor () {
         }
     });
 }
-
-//Save Button 
-$(".saveBtn").on("click", function(){
-
-    timeSpan = $(this).siblings(".hour").text().trim();
-    UItext = $(this).siblings(".user-input").val().trim();
-
-    //Console Logs used for testing/debugging
-    console.log(timeSpan);
-    console.log(UItext);
-
-    localStorage.setItem(timeSpan, JSON.stringify(UItext));
-});
 
 startUp();
 timedColor();
