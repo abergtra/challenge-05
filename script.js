@@ -8,9 +8,10 @@ var twoPM = $('#14time');
 var threePM = $('#15time');
 var fourPM = $('#16time');
 var fivePM = $('#17time');
-var sixPM = $('#18time');
-var sevenPM = $('#19time');
-var eightPM = $('#20time');
+//IF YOU WANT TO ADD OVERTIME TO YOUR SCHEDULE:
+    // var sixPM = $('#18time');
+    // var sevenPM = $('#19time');
+    // var eightPM = $('#20time');
 
 //establish current date & time with Moment.js
 var currentDateTime = moment().format('dddd') + ' | ' + moment().format("MMM Do") + ', ' + moment().format("YYYY");
@@ -77,14 +78,15 @@ function startUp() {
     var start5PM = JSON.parse(localStorage.getItem("5PM"))
     fivePM.val(start5PM);
 
-    var start6PM = JSON.parse(localStorage.getItem("6PM"))
-    sixPM.val(start6PM);
+//IF YOU WANT TO ADD OVERTIME TO YOUR SCHEDULE:    
+    // var start6PM = JSON.parse(localStorage.getItem("6PM"))
+    // sixPM.val(start6PM);
     
-    var start7PM = JSON.parse(localStorage.getItem("7PM"))
-    sevenPM.val(start7PM);
+    // var start7PM = JSON.parse(localStorage.getItem("7PM"))
+    // sevenPM.val(start7PM);
 
-    var start8PM = JSON.parse(localStorage.getItem("8PM"))
-    eightPM.val(start8PM);
+    // var start8PM = JSON.parse(localStorage.getItem("8PM"))
+    // eightPM.val(start8PM);
   } 
 
 //Set Format of Textbox Based on Time
